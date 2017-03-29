@@ -1,12 +1,4 @@
 
-$(document).ready(function()
-{
-  create_Owner_Page_Display();
-  create_Owner_Page_EnterInfo();
-	//$('#addData').mousedown(add_gestion);
-
-
-});
 
 function create_Owner_Page_Display(){
 
