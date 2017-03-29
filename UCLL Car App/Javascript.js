@@ -170,9 +170,11 @@ var carOwner = function () {
     $manDiv.append(stringBuilder);
 };*/
 
-var create_Owner_Page_Display = function(){
+var carOwner = function(e){
+  hideAll();
+  //Display Part
       var user = "owner1";
-      var ownerDisplay = "<ul class='list-group'>";
+      var owner_display = "<h2>Your car(s) : </h2> </br><ul class='list-group'>";
     /*
       $.get( "testCar.php", function( data ) {
       $.each(data, function (index, dataMessage) {
@@ -189,11 +191,11 @@ var create_Owner_Page_Display = function(){
               }
 
     $.each(data, function (index, dataMessage) {
-      ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
+      owner_display += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
       $.each(dataMessage, function (key, value) {
-          ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
+          owner_display += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
       });
-      ownerDisplay += "</ul>";
+      owner_display += "</ul>";
     });
     /*
       $.ajax({
@@ -215,21 +217,23 @@ var create_Owner_Page_Display = function(){
         alert("We couldn't retrieve the data");
       });*/
 
-      ownerDisplay += "</ul>";
+      owner_display += "</ul>";
 
-      $("#carOwner-display").append(ownerDisplay); $("#carOwner-display").fadeIn();
+      ///Choice Part
+
+      var informations = {0:"Engine",1:"Color",2:"Km",3:"Insurance",4:"licence plate"};
+      var owner_choice = "<h2>What information(s) do you want to add ? </h2> </br><div class='form-group'>";
+
+      $.each(informations,function(index,value){
+          owner_choice += "<label class='checkbox-inline'><input type='checkbox' value=''>"+value+"</label>";
+      });
+      owner_choice += "<div></br><input type='button' class='btn btn-primary' value='Chose'</input></div></div>";
+
+      $("#carOwner").append(owner_display);
+
+      $("#carOwner").append(owner_choice);
 };
 
-var create_Owner_Page_EnterInfo = function(){
-    var informations = {0:"Engine",1:"Color",2:"Km",3:"Insurance",4:"licence plate"};
-    var owner_choice = "<div class='form-group'>";
-
-    $.each(informations,function(index,value){
-        owner_choice += "<label class='checkbox-inline'><input type='checkbox' value=''>"+value+"</label>";
-    });
-    owner_choice += "<div></br><input type='button' class='btn btn-primary' value='Send'</input></div></div>";
-    $("#carOwner-choice").append(owner_choice); $("#carOwner-choice").fadeIn();
-};
 
 var login = function () {
     hideAll();
@@ -303,8 +307,7 @@ var progressLogin = function () {
             garage();
             break;
         case 'carowner':
-        create_Owner_Page_Display();
-        create_Owner_Page_EnterInfo();
+            carOwner();
             break;
         case 'vendor':
             vendor();
