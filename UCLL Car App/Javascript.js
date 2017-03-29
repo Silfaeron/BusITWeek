@@ -76,7 +76,7 @@ var garage = function () {
     stringBuilder += '</form>';
     $manDiv.append(stringBuilder);
 };
-
+/*
 var vendor = function () {
     hideAll();
     var $manDiv = $('#vendor');
@@ -118,6 +118,58 @@ var vendor = function () {
     stringBuilder += '<input type="submit" value="submit" class="btn btn-primary">';
     stringBuilder += '</form>';
     $manDiv.append(stringBuilder);
+};*/
+var vendor = function(){
+  hideAll();
+  //Display Part
+      var user = "vendor1";
+      var vendor_display = "<h2>Your car(s) : </h2> </br><ul class='list-group'>";
+    /*
+      $.get( "testCar.php", function( data ) {
+      $.each(data, function (index, dataMessage) {
+        ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
+        $.each(dataMessage, function (key, value) {
+            ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
+        });
+        ownerDisplay += "</ul>";
+      });
+    });*/
+    var data = {a:{w:1,x:2,c:1},
+                b:{q:1,s:2,d:3},
+                c:{h:1,j:2,k:3}
+              }
+
+    $.each(data, function (index, dataMessage) {
+      vendor_display += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
+      $.each(dataMessage, function (key, value) {
+          vendor_display += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
+      });
+      vendor_display += "</ul>";
+    });
+    /*
+      $.ajax({
+        url: 'testCar.php',
+        type: 'GET',
+        data: {'user': user}
+      })
+      .done(function(data){
+
+        $.each(data, function (index, dataMessage) {
+          ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
+          $.each(dataMessage, function (key, value) {
+              ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
+          });
+          ownerDisplay += "</ul>";
+        });
+      })
+      .fail(function(){
+        alert("We couldn't retrieve the data");
+      });*/
+
+      vendor_display += "</ul>";
+
+      $("#vendor").append(vendor_display);
+
 };
 /*
 var carOwner = function () {
