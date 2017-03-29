@@ -6,6 +6,10 @@
 header{
     text-align: center;
 }
+header p{
+    text-align: right;
+    margin-right: 2%;
+}
 input, select{
     margin-bottom: 2%;
 }
@@ -14,7 +18,7 @@ textarea{
     margin-bottom: 2%;
 }
 
-/* style of the login form */
+/* style of the login & registration form */
 .form-signin
 {
     max-width: 330px;
