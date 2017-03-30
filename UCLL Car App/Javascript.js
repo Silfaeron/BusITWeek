@@ -25,8 +25,8 @@ var manufacturing = function () {
     stringBuilder += '</select>';
     stringBuilder += '<label for="manufacturerPlant">Manufacturer Plant:</label>';
     stringBuilder += '<input type="text" id="manufacturerPlant" class="form-control">';
-    stringBuilder += '<label for="engine">Engine:</label>';
-    stringBuilder += '<input type="text" id="engine" class="form-control">';
+    stringBuilder += '<label for="km">Km:</label>';
+    stringBuilder += '<input type="number" id="km" class="form-control">';
     stringBuilder += '<label for="fuel">Type of fuel:</label>';
     stringBuilder += '<select class="form-control" id="fuel">';
     stringBuilder += '<option>Premium unleaded petrol</option>'+
@@ -37,7 +37,7 @@ var manufacturing = function () {
     stringBuilder += '</select>';
     stringBuilder += '<label for="year">Year:</label>';
     stringBuilder += '<input type="number" min="1900" id="year" placeholder="1900" class="form-control">';
-    stringBuilder += '<input type="submit" value="submit" class="btn btn-primary">';
+    stringBuilder += '<input id="manSubmit" type="submit" value="submit" class="btn btn-primary">';
     stringBuilder += '</form>';
     $manDiv.append(stringBuilder);
 };
@@ -76,7 +76,7 @@ var garage = function () {
     stringBuilder += '</form>';
     $manDiv.append(stringBuilder);
 };
-/*
+
 var vendor = function () {
     hideAll();
     var $manDiv = $('#vendor');
@@ -118,61 +118,9 @@ var vendor = function () {
     stringBuilder += '<input type="submit" value="submit" class="btn btn-primary">';
     stringBuilder += '</form>';
     $manDiv.append(stringBuilder);
-};*/
-var vendor = function(){
-  hideAll();
-  //Display Part
-      var user = "vendor1";
-      var vendor_display = "<h2>Your car(s) : </h2> </br><ul class='list-group'>";
-    /*
-      $.get( "testCar.php", function( data ) {
-      $.each(data, function (index, dataMessage) {
-        ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
-        $.each(dataMessage, function (key, value) {
-            ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
-        });
-        ownerDisplay += "</ul>";
-      });
-    });*/
-    var data = {a:{w:1,x:2,c:1},
-                b:{q:1,s:2,d:3},
-                c:{h:1,j:2,k:3}
-              }
-
-    $.each(data, function (index, dataMessage) {
-      vendor_display += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
-      $.each(dataMessage, function (key, value) {
-          vendor_display += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
-      });
-      vendor_display += "</ul>";
-    });
-    /*
-      $.ajax({
-        url: 'testCar.php',
-        type: 'GET',
-        data: {'user': user}
-      })
-      .done(function(data){
-
-        $.each(data, function (index, dataMessage) {
-          ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
-          $.each(dataMessage, function (key, value) {
-              ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
-          });
-          ownerDisplay += "</ul>";
-        });
-      })
-      .fail(function(){
-        alert("We couldn't retrieve the data");
-      });*/
-
-      vendor_display += "</ul>";
-
-      $("#vendor").append(vendor_display);
-
 };
-/*
-var carOwner = function () {
+
+/*var carOwner = function () {
     hideAll();
     var $manDiv = $('#carOwner');
     var stringBuilder = '';
@@ -222,70 +170,67 @@ var carOwner = function () {
     $manDiv.append(stringBuilder);
 };*/
 
-var carOwner = function(e){
-  hideAll();
-  //Display Part
-      var user = "owner1";
-      var owner_display = "<h2>Your car(s) : </h2> </br><ul class='list-group'>";
+var create_Owner_Page_Display = function(){
+    hideAll();
+    var user = "owner1";
+    var ownerDisplay = "<ul class='list-group'>";
     /*
-      $.get( "testCar.php", function( data ) {
-      $.each(data, function (index, dataMessage) {
+     $.get( "testCar.php", function( data ) {
+     $.each(data, function (index, dataMessage) {
+     ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
+     $.each(dataMessage, function (key, value) {
+     ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
+     });
+     ownerDisplay += "</ul>";
+     });
+     });*/
+    var data = {a:{w:1,x:2,c:1},
+        b:{q:1,s:2,d:3},
+        c:{h:1,j:2,k:3}
+    };
+
+    $.each(data, function (index, dataMessage) {
         ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
         $.each(dataMessage, function (key, value) {
             ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
         });
         ownerDisplay += "</ul>";
-      });
-    });*/
-    var data = {a:{w:1,x:2,c:1},
-                b:{q:1,s:2,d:3},
-                c:{h:1,j:2,k:3}
-              }
-
-    $.each(data, function (index, dataMessage) {
-      owner_display += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
-      $.each(dataMessage, function (key, value) {
-          owner_display += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
-      });
-      owner_display += "</ul>";
     });
     /*
-      $.ajax({
-        url: 'testCar.php',
-        type: 'GET',
-        data: {'user': user}
-      })
-      .done(function(data){
+     $.ajax({
+     url: 'testCar.php',
+     type: 'GET',
+     data: {'user': user}
+     })
+     .done(function(data){
+     $.each(data, function (index, dataMessage) {
+     ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
+     $.each(dataMessage, function (key, value) {
+     ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
+     });
+     ownerDisplay += "</ul>";
+     });
+     })
+     .fail(function(){
+     alert("We couldn't retrieve the data");
+     });*/
 
-        $.each(data, function (index, dataMessage) {
-          ownerDisplay += "<ul class='list-group'><li class='list-group-item'><h3>"+index+"</h3>";
-          $.each(dataMessage, function (key, value) {
-              ownerDisplay += "<li class='list-group-item'><h5>"+key+" : </h5><p>\t"+value+"</p></li>";
-          });
-          ownerDisplay += "</ul>";
-        });
-      })
-      .fail(function(){
-        alert("We couldn't retrieve the data");
-      });*/
+    ownerDisplay += "</ul>";
 
-      owner_display += "</ul>";
+    $("#carOwnerChoice").append(ownerDisplay);
 
-      ///Choice Part
-
-      var informations = {0:"Engine",1:"Color",2:"Km",3:"Insurance",4:"licence plate"};
-      var owner_choice = "<h2>What information(s) do you want to add ? </h2> </br><div class='form-group'>";
-
-      $.each(informations,function(index,value){
-          owner_choice += "<label class='checkbox-inline'><input type='checkbox' value=''>"+value+"</label>";
-      });
-      owner_choice += "<div></br><input type='button' class='btn btn-primary' value='Chose'</input></div></div>";
-
-      $("#carOwner").append(owner_display);
-
-      $("#carOwner").append(owner_choice);
 };
 
+var create_Owner_Page_EnterInfo = function(){
+    var informations = {0:"Engine",1:"Color",2:"Km",3:"Insurance",4:"licence plate"};
+    var owner_choice = "<div class='form-group'>";
+
+    $.each(informations,function(index,value){
+        owner_choice += "<label class='checkbox-inline'><input type='checkbox' value=''>"+value+"</label>";
+    });
+    owner_choice += "<div></br><input type='button' class='btn btn-primary' value='Send'</input></div></div>";
+    $("#carOwnerChoice").append(owner_choice);
+};
 
 var login = function () {
     hideAll();
@@ -294,7 +239,7 @@ var login = function () {
     stringBuilder += '<div class="col-sm-6 col-md-4 col-md-offset-4">';
     stringBuilder += '<h1 class="text-center login-title">Sign in to continue to BTECC</h1>';
     stringBuilder += '<div class="account-wall">';
-    stringBuilder += '<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">';
+    stringBuilder += '<img class="profile-img" src="btecc.png" alt="">';
     stringBuilder += '<form class="form-signin">';
     stringBuilder += '<input id="name" type="text" class="form-control" placeholder="Name" required autofocus>';
     stringBuilder += '<input id="email" type="email" class="form-control" placeholder="Email" required>';
@@ -359,7 +304,9 @@ var progressLogin = function () {
             garage();
             break;
         case 'carowner':
-            carOwner();
+            //carOwner();
+            create_Owner_Page_Display();
+            create_Owner_Page_EnterInfo();
             break;
         case 'vendor':
             vendor();
@@ -392,6 +339,12 @@ var saveAccount = function(account) {
     }
 };
 
+var saveData = function (e) {
+    e.preventDefault();
+  console.log(this);
+  console.log($this);
+};
+
 $(function () {
     login();
     var $login = $('#login');
@@ -399,5 +352,7 @@ $(function () {
     $login.on('click', '#createAcc', register);
     $login.on('submit', progressLogin);
     $register.on('click', '#backToLogin', login);
+    $('#manufacturing').on('submit', saveData);
 
 });
+
