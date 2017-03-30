@@ -25,8 +25,8 @@ var manufacturing = function () {
     stringBuilder += '</select>';
     stringBuilder += '<label for="manufacturerPlant">Manufacturer Plant:</label>';
     stringBuilder += '<input type="text" id="manufacturerPlant" class="form-control">';
-    stringBuilder += '<label for="km">Km:</label>';
-    stringBuilder += '<input type="number" id="km" class="form-control">';
+    stringBuilder += '<label for="engine">Engine:</label>';
+    stringBuilder += '<input type="text" id="engine" class="form-control">';
     stringBuilder += '<label for="fuel">Type of fuel:</label>';
     stringBuilder += '<select class="form-control" id="fuel">';
     stringBuilder += '<option>Premium unleaded petrol</option>'+
